@@ -1,0 +1,22 @@
+EXERCISE 4: Bash Script - User Processes Sorted (done)
+Extend the previous script to ask for a user input for sorting the processes output either by memory or CPU consumption, and print the sorted list.
+
+Solution:
+EXERCISE 4: Bash Script - User processes Sorted with input cpu k3 or mem k4
+#!/bin/bash
+echo "**Mod-2-Exercise 4**"
+echo "This prints the processes sorted by memory or CPU"
+
+#Choose option
+read -p "To sort by mem, enter m, or cpu, enter c: " col_num
+
+#Print output based on option
+if [ "$col_num" == "m" ]
+then
+	echo "Sorting out by memory."
+	ps -aux | grep $USER | sort -nk4
+elif [ "$col_num" == "c" ]
+then
+	echo "Sorting output by Cpu."
+	ps -aux | grep $USER | sort -nk3 
+fi
