@@ -1,0 +1,23 @@
+EXERCISE 5: Bash Script - Number of User Processes Sorted
+Extend the previous script to ask additionally for user input about how many processes to print. Hint: use head program to limit the number of outputs. 
+
+Solution:
+#!/bin/bash
+echo "**Exercise 5****"
+echo "To print the specific number of processes of the current user sorted by cpu or mem"
+
+#Indicate the sorting column
+read -p "To sort by mem, enter m, or cpu, enter c: " col_num
+
+#Specify the number of processes
+read -p "Confirm the number of user processes to display: " num_proc
+
+if [ "$col_num" == "m" ]
+then
+	echo "Sorting out by memory."
+	ps -aux | grep $USER | sort -nk4 | head -n $num_proc
+elif [ "$col_num" == "c" ]
+then
+	echo "Sorting output by Cpu."
+	ps -aux | grep $USER | sort -nk3 | head -n $num_proc
+fi
