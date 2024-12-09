@@ -1,0 +1,15 @@
+
+EXERCISE 7: Bash Script - Node App Check Status
+Extend the script to check after running the application that the application has successfully started and prints out the application's running process and the port where it's listening. 
+
+Solution
+
+Solution
+#!/bin/bash
+echo "*****Exer 7 Check running NodeJs App*****"
+
+#Check if node server is running
+ps -aux | grep nodejs
+
+#Show port in use
+sudo netstat -lntp | grep :3000
