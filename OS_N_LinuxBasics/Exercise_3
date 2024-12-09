@@ -1,0 +1,9 @@
+EXERCISE 3: Bash Script - User Processes (done)
+Write a bash script using Vim editor that checks all the processes running for the current user (USER env var) and prints out the processes in console. Hint: use ps aux command and grep for the user.
+
+Solution:
+EXERCISE 3: Bash Script - User Processes
+#!/bin/bash
+echo "To print the processes of the current user"
+ps -aux | grep $USER
+(N.B- assign group execute permission)
