@@ -1,0 +1,59 @@
+Context: We have a ready NodeJS application that needs to run on a server. The app is already configured to read in environment variables.
+
+EXERCISE 6: Bash Script - Start Node App
+Write a bash script with following logic: 
+
+Install NodeJS and NPM and print out which versions were installed
+Download an artifact file from the URL: https://node-envvars-artifact.s3.eu-west-2.amazonaws.com/bootcamp-node-envvars-project-1.0.0.tgz. Hint: use curl or wget
+Unzip the downloaded file
+Set the following needed environment variables: APP_ENV=dev, DB_USER=myuser, DB_PWD=mysecret
+Change into the unzipped package directory
+Run the NodeJS application by executing the following commands:  npm install and node server.js
+Notes:
+
+Make sure to run the application in background so that it doesn't block the terminal session where you execute the shell script
+If any of the variables is not set, the node app will print error message that env vars is not set and exit
+It will give you a warning about LOG_DIR variable not set. You can ignore it for now.
+
+
+Solution
+EXERCISE 6: Start Node App- 
+#Refresh repo index
+apt update
+
+#Install NodeJS
+apt install -y nodejs
+
+#install NPM
+apt install -y npm
+
+#Get version of NodeJs and NPM and confirm both are installed
+nodejs_version=$(nodejs --version)
+npm_version=$(npm --version )
+
+if [ -z "$nodejs_version" ] && [ -z "npm_version" ]
+then
+	echo "Nodejs $nodejs_version and Npm $npm_version installed not present."
+else
+	echo "Nodejs $nodejs_version and Npm $npm_version present and  installed."
+fi
+
+Get artefact from AWS repo
+wget https://node-envvars-artifact.s3.eu-west-2.amazonaws.com/bootcamp-node-envvars-project-1.0.0.tgz.
+
+#Unzip the tar file
+tar -xvzf bootcamp-node-envvars-project-1.0.0.tgz
+
+#Set environmental variables
+export APP_ENV=dev
+export DB_USER=myuser
+export DB_PWD=mysecret
+source ~/.bashrc
+
+#Change directory to the directory of unzipped tar file
+cd package/
+
+#Run NodeJS server in background
+npm install &
+node server.js & 
+
