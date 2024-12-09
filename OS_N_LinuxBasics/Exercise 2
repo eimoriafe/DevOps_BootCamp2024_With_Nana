@@ -1,0 +1,31 @@
+EXERCISE 2: Bash Script - Install Java (done)
+Write a bash script using Vim editor that installs the latest java version and checks whether java was installed successfully by executing a java -version command.
+
+After installation command, it checks 3 conditions:
+
+1. whether java is installed at all
+2. whether an older Java version is installed (java version lower than 11)
+3. whether a java version of 11 or higher was installed
+It prints relevant informative messages for all 3 conditions. Installation was successful if the 3rd condition is met and you have Java version 11 or higher available.
+
+Solution:
+EXERCISE 2:Shell script -Java installed
+#!/bin/bash
+echo "Script will install latest Java and show version "
+apt update
+apt -qq install -y default-jre
+
+#Get java version and main version number
+java_version=$(java --version | grep "openjdk" | awk '{print $1,$2}')
+version_num=$(java --version | grep "openjdk" | awk '{print substr($2,0,2)}'
+
+#check if java is present
+if [ "$java_version" == "" ]
+then
+	echo "Java is not installed!"
+  elif [ "$version_num" -le 11 ]
+then
+	echo "Older java is installed"
+else
+	echo "Installation successful! Java version $java_version is installed."
+fi
