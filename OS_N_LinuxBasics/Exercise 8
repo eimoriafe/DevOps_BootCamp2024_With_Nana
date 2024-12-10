@@ -1,0 +1,57 @@
+EXERCISE 8: Bash Script - Node App with Log Directory
+Extend the script to accept a parameter input log_directory: a directory where application will write logs.
+The script will check whether the parameter value is a directory name that doesn't exist and will create the directory, if it does exist, it sets the env var LOG_DIR to the directory's absolute path before running the application, so the application can read the LOG_DIR environment variable and write its logs there.
+Solution
+
+Solution
+#!/bin/bash
+#EXERCISE 8: 7-extended Start Node App- 
+#Refresh repo index
+apt update
+
+#Accept 
+
+#Install NodeJS
+apt install -y nodejs
+
+#install NPM
+apt install -y npm
+
+#Get version of NodeJs and NPM and confirm both are installed
+nodejs_version=$(nodejs --version)
+npm_version=$(npm --version )
+
+if [ -z "$nodejs_version" ] && [ -z "npm_version" ]
+then
+	echo "Nodejs $nodejs_version and Npm $npm_version installed not present."
+else
+	echo "Nodejs $nodejs_version and Npm $npm_version present and  installed."
+fi
+
+Get artefact from AWS repo
+wget https://node-envvars-artifact.s3.eu-west-2.amazonaws.com/bootcamp-node-envvars-project-1.0.0.tgz.
+
+#Unzip the tar file
+tar -xvzf bootcamp-node-envvars-project-1.0.0.tgz
+
+#Set environmental variables
+export APP_ENV=dev
+export DB_USER=myuser
+export DB_PWD=mysecret
+source ~/.bashrc
+
+#Change directory to the directory of unzipped tar file
+cd package/
+
+#Run NodeJS server in background
+npm install &
+node server.js & 
+
+
+echo "*****Exer 7 Check running NodeJs App*****"
+
+#Check if node server is running
+ps -aux | grep nodejs
+
+#Show port in use
+sudo netstat -lntp | grep :3000
