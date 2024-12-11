@@ -1,4 +1,64 @@
 EXERCISE 9: Bash Script - Node App with Service user
 You've been running the application with your user. But we need to adjust that and create own service user: myapp for the application to run. So extend the script to create the user and then run the application with the service user. 
 
+Solution
+#!/bin/bash
+#EXERCISE 9: 8-extended Start Node App- 
+#Refresh repo index
+apt update -y
+
+#Create user environment variable 
+NEW_USER=myapp
+
+#Accept input into Log_directory
+read -p LOG_DIRECTORY
+
+if [ -d $LOG_DIRECTORY ]
+then
+    echo "$LOG_DIRECTORY exists"
+else
+    echo "creating a new directory"
+    mkdir -p $LOG_DIRECTORY
+
+#Install NodeJS
+apt install -y nodejs
+
+#install NPM
+apt install -y npm
+
+#Get versions of NodeJs and NPM and confirm both are installed
+nodejs_version=$(nodejs --version)
+npm_version=$(npm --version )
+
+if [ -z "$nodejs_version" ] && [ -z "npm_version" ]
+then
+	echo "Nodejs $nodejs_version and Npm $npm_version installed not present."
+else
+	echo "Nodejs $nodejs_version and Npm $npm_version present and  installed."
+fi
+
+Get artefact from AWS repo
+runuser -l $NEW_USER -c "wget https://node-envvars-artifact.s3.eu-west-2.amazonaws.com/bootcamp-node-envvars-project-1.0.0.tgz."
+
+#Unzip the tar file
+runuser -l $NEWUSER -c "tar -xvzf bootcamp-node-envvars-project-1.0.0.tgz"
+
+#Set environmental variables
+export APP_ENV=dev
+export DB_USER=myuser
+export DB_PWD=mysecret
+source ~/.bashrc
+
+#Change the directory to the directory of the unzipped tar file
+cd package/
+
+#Run NodeJS server in background
+npm install &
+node server.js & 
+
+#Check if node server is running
+ps -aux | grep nodejs
+
+#Show port in use
+sudo netstat -lntp | grep :3000
 
