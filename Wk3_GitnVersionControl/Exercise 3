@@ -1,0 +1,28 @@
+EXERCISE 3: Feature branch [Done]
+Create a feature branch and change following:
+#create and switch to new branch changeReq
+git checkout -b feature/changeReq
+
+Upgrade the logstash-logback-encoder version to 7.3
+
+#locate logstash string in build and edit 
+grep logstash *
+vim build.gradle
+
+#find index.html file
+find * -name 'index.html'
+
+Add image to the index.html file (url: https://www.careeraddict.com/uploads/article/58721/illustration-group-people-team-meeting.jpg)
+You are done with the changes. So:
+
+#Check your changes using "git diff" and
+git diff
+
+Commit them if everything is correct.
+Note: There is a standard in your team to name commits with descriptive text.
+
+git commit -m "Upgrade logstash and add image to index"
+git add .
+git push --set-upstream origin feature/changeReq
+
+Push your changes to your remote repository.
