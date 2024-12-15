@@ -1,0 +1,32 @@
+
+EXERCISE 1: Clone and create new repository (Done)
+Clone git repository, creating a new local copy and
+Push it to your own Gitlab remote repository.
+
+#clone and cd into git repo
+git clone git@gitlab.com:twn-devops-bootcamp/latest/03-git/git-exercises.git
+cd git-exercises
+
+#create empty remote repo on personal gitlab.
+Browser GUI action.
+
+#set url to personal gitlab profile
+git remote set-url origin git@gitlab.com:exceloracle1/git-exercises.git
+
+#confirm origin url
+gitrepo_url=$(git remote -v)
+echo $gitrepo_url
+
+#configure merge for initial pull by local git repo
+git config pull.rebase false
+
+#Push to remote repo
+git push -u origin main
+
+#test synch
+touch emmaFile
+git add .
+git commit -m "New file added in cloned repo"
+git push
+
+echo "Congratulations, exercise complete."
