@@ -1,0 +1,16 @@
+EXERCISE 6: Fix merge conflict
+You are on the bugfix branch. You notice the logger library version is old, so:
+
+Update it to version 7.2 (Change the same location in bugfix branch)
+Some time went by since you opened your bugfix branch, so you want the up-to-date master state to avoid major conflicts.
+
+vim build.gradle
+update to 7.2
+git add .
+git commit -m " Upgrade to 7.2 "
+git push
+
+Merge the master branch in your bugfix branch - fix the merge conflict!
+git merge main
+vim build.gradle
+chose to upgrade to 7.3
