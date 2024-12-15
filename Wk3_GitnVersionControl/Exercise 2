@@ -1,0 +1,17 @@
+
+EXERCISE 2: 
+Ignore .idea folder, .DS_Store, out and build folders
+Hint: remove from git cache first
+
+#Remove from git cache and add to gitignore
+git rm -r --cached .idea .DS_Store out build
+
+echo ".idea" >> .gitignore
+echo ".DS_Store" >> .gitignore
+echo "out" >> .gitignore
+echo "build" >> .gitignore
+
+#Commit and push changes
+git commit -m "remove"
+git add .
+git push
