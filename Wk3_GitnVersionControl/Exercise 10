@@ -1,0 +1,5 @@
+EXERCISE 10: Delete branches
+Now that you are done, both feature and bugfix got deployed and you want to cleanup the old branches.
+
+Delete both branches both locally and remotely
+git branch -d bugfix/spelling-error
