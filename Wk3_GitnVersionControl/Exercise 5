@@ -1,0 +1,15 @@
+EXERCISE 5: Merge request [Done]
+You are done with the feature, now it needs to be tested and deployed. So:
+
+Merge your feature branch into master (using a merge request)
+GUI Action
+Inside feature branch, request merge.
+On dashboard Approve , then Merge.
+
+On Cli
+#change to main
+git checkout main
+git merge feature/changeReq
+
+#push changes
+git push
