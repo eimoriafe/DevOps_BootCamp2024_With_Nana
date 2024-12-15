@@ -1,0 +1,25 @@
+EXERCISE 7: Revert commit
+Still on the bugfix branch. You also noticed a spelling mistake in the index.html file, so you want to fix that in the same branch.
+
+Fix the spelling mistake and commit the fix
+You also want to update the image.
+
+So also change the image url (src) in a separate commit.
+You are done with the changes:
+
+git commit -m "image and spell"
+
+Push both commits to the remote repository.
+git push
+
+
+Your team members tell you the previous image was the correct one, so you want to undo it. But since you already pushed to remote, you must revert the change.
+
+Revert the last commit and push your changes to remote repository
+git reset --hard HEAD~1 (clear both comit and changes) or 
+git reset --soft head~1
+
+git commit --amend
+git push --force (avoid it in master/main/dev branch because it will break git connections for others when they need to push)
+
+git revert <hash>
