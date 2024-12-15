@@ -23,3 +23,7 @@ git commit --amend
 git push --force (avoid it in master/main/dev branch because it will break git connections for others when they need to push)
 
 git revert <hash>
+# revert last commit and push the revertion into remote repo
+git revert HEAD
+git push
+
