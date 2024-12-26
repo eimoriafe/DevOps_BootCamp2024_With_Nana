@@ -6,3 +6,9 @@ create your own project/git repository from it
 
 Solution
 +++++++++++++
+git clone git@gitlab.com:twn-devops-bootcamp/latest/04-build-tools/build-tools-exercises.git
+ls
+cd build-tools-exercises/
+git remote set-url origin git@gitlab.com:exceloracle1/build-tools-exercises.git
+git remote -v
+git push
