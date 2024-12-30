@@ -1,0 +1,9 @@
+#Clone Repo
+git clone git@gitlab.com:twn-devops-bootcamp/latest/05-cloud/cloud-basics-exercises.git
+cd cloud-basics-exercises.git
+
+#Linked to private repo
+git remote set-url origin git@gitlab.com:exceloracle1/cloud-basics-exercises.git
+git config pull.rebase false
+git push -u origin master
+
