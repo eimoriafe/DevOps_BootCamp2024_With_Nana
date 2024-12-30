@@ -1,0 +1,4 @@
+Package NodeJS app
+
+cd app
+npm pack
