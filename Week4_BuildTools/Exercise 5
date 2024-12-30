@@ -1,0 +1,4 @@
+Added line below for Application.java file
+java -jar build-tools-exercise-1.0-SNAPSHOT.jar frank lucas
+frank and lucas are the two parameters passed.
+

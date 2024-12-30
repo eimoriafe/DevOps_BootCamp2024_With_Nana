@@ -1,0 +1,5 @@
+changed true string to true boolean in AppJava.test file
+gradle test
+
+--output---
+build successful
