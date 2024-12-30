@@ -3,7 +3,13 @@ git clone git@gitlab.com:twn-devops-bootcamp/latest/05-cloud/cloud-basics-exerci
 cd cloud-basics-exercises.git
 
 #Linked to private repo
-git remote set-url origin git@gitlab.com:exceloracle1/cloud-basics-exercises.git
-git config pull.rebase false
-git push -u origin master
+# remove remote repo reference and create your own local repository
+rm -rf .git
+git init 
+git add .
+git commit -m "fi commit"
+
+# create git repository on Gitlab and push your newly created local repository to it
+git remote add origin git@gitlab.com:exceloracle1/cloud-basics-exercises.git
+git push -u origin main
 
