@@ -12,3 +12,15 @@ cd build-tools-exercises/
 git remote set-url origin git@gitlab.com:exceloracle1/build-tools-exercises.git
 git remote -v
 git push
+
+OR
+
+# remove remote repo reference and create your own local repository
+rm -rf .git
+git init 
+git add .
+git commit -m "initial commit"
+
+# create git repository on Gitlab and push your newly created local repository to it
+git remote add origin git@gitlab.com:exceloracle1/build-tools-exercises.git
+git push -u origin master
