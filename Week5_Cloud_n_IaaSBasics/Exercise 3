@@ -1,0 +1,4 @@
+Prep remote server to run Node App
+apt update
+apt install nodejs
+apt install npm
