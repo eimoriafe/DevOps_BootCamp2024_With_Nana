@@ -1,0 +1,3 @@
+On DigitalOcean dashboard, configure firewall
+From Networking, edit firewall rule
+Add Custom TCP inbound, open port 3000.
