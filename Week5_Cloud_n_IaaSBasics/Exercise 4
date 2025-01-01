@@ -1,0 +1,5 @@
+Copy nodejs app tar file to droplet
+###from local node ###
+scp bootcamp-node-project-1.0.0.tgz root@134.209.25.235:/root
+
+

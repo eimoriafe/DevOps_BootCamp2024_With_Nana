@@ -1,0 +1,10 @@
+#Unzip the tar file on the cloud droplet
+tar -xzf bootcamp-node-project-1.0.0.tgz 
+
+#change into the package directory
+cd package
+
+#run npm install and node server commands
+npm install 
+node server.js
+
