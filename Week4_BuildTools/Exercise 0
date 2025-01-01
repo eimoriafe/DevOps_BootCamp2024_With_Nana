@@ -9,6 +9,7 @@ Solution
 git clone git@gitlab.com:twn-devops-bootcamp/latest/04-build-tools/build-tools-exercises.git
 ls
 cd build-tools-exercises/
+#To keep the Git logs
 git remote set-url origin git@gitlab.com:exceloracle1/build-tools-exercises.git
 git remote -v
 git push
@@ -16,6 +17,7 @@ git push
 OR
 
 # remove remote repo reference and create your own local repository
+#To wipe the git log
 rm -rf .git
 git init 
 git add .
