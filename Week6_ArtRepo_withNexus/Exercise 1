@@ -1,0 +1,40 @@
+#Install Nexus on DO Ubuntu Server(http://138.68.150.44:8081/)
+1. Droplet for server with 8GB RAM created on Digital Ocean(DO) Cloud
+
+2. Install nexus on local ubuntu
+-sudo apt install openjdk-17-sdk
+
+#change into opt directory
+cd opt
+
+#fetch latest nexus tar file
+wget https://download.sonatype.com/nexus/3/nexus-3.75.1-01-unix.tar.gz
+
+#untar file
+tar -zxvf nexus-3.75.1-01-unix.tar.gz
+
+#create nexus user with adduser
+adduser nexus
+
+#grant ownership on nexus & sonatype folders
+chown -R nexus:nexus nexus-3.75.1-01
+chown -R nexus:nexus sonatype-work
+
+#Uncomment config in nexus.rc file
+vim /opt/nexus-3.75.1-01/bin/nexus.rc
+run_as_user="nexus"
+
+#run nexus as nexus user
+su - nexus
+/opt/nexus-3.75.1-01/bin/nexus start
+
+#Configure firewall rule on DO dashboard
+Allow port 8081 inbound
+ps aux | grep nexus 
+netstat -lntp | grep *8081 
+
+#On browser, set password for nexus admin
+copy default password from /opt/sona-type*/nexus/admin.password
+enable anonymous access
+
+
