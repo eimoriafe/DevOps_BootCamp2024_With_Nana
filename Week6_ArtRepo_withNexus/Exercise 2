@@ -1,0 +1,4 @@
+#Create npm hosted repository on Nexus
+On the Nexus ARM UI,
+1. Create BLOB store called npm-blob
+2. Create npm-hosted repo and assign the npm-blob to it.
