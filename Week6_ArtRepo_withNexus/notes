@@ -1,0 +1,6 @@
+#For nodejs app
+npm adduser --auth-type=legacy --registry=http://138.68.150.44:8081/repository/npm-hosted/
+
+#For maven app
+
+
