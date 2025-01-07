@@ -1,0 +1,2 @@
+#Create nexus user for project 2 with access to maven repo
+On Nexus UI, created nexus2, with nx-java role
