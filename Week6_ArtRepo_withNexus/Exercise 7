@@ -1,0 +1,42 @@
+#Added the following to the gradle.build file for the java app
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.1.0'
+    id 'io.spring.dependency-management' version '1.1.0'
+}
+group 'com.example'
+version '1.0-RELEASE'
+sourceCompatibility = 17
+
+apply plugin: 'maven-publish'
+
+publishing {
+   publications {
+        maven(MavenPublication){
+            artifact("build/libs/my-app-$version" + ".jar"){
+                extension 'jar'
+            }
+        }
+   }
+repositories {
+        maven {
+            name 'maven'
+            url "http://138.68.150.44:8081/repository/maven3/"
+            allowInsecureProtocol = true
+            credentials {
+                username project.repoUser 
+                password project.repoPassword
+            }
+        }
+   }
+
+#Created the gradle.properties with the following entries
+repoUser=nexus2
+repoPassword=password
+
+#Build app with gradle
+gradle build
+
+#Publish jar file to Nexus
+gradle publish
+
