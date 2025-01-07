@@ -1,14 +1,21 @@
 #clone Node app
 git clone git@gitlab.com:twn-devops-bootcamp/latest/04-build-tools/node-app.git
 
-
+#Install npm
 sudo apt install -y npm
+cd node-app
 
-npm install
-npm set registry  http://138.68.150.44:8081/repository/npm-hosted/
-npm run build
-npm run
-npm publish --registry=http://138.68.150.44:8081/repository/npm-hosted/ nodejs-app-1.0.0.tgz 
+#Set registry
+npm set registry http://138.68.150.44:8081/repository/npm-hosted/
 
-npm publish --registry=http://138.68.150.44:8081/repository/npm-hosted/ node
+#add npm user
 npm adduser --auth-type=legacy --registry=http://138.68.150.44:8081/repository/npm-hosted/
+
+#pack app
+npm pack
+
+#build node app
+npm run build
+
+#publish 
+npm publish --registry=http://138.68.150.44:8081/repository/npm-hosted/ nodejs-app-1.0.0.tgz 
