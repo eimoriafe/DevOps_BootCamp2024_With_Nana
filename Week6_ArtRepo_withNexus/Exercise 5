@@ -1,0 +1,5 @@
+#Create maven hosted repo
+On Nexus instance http://138.68.150.44, log in as admin
+
+#Create maven hosted repo
+Select new repo, created maven3, select release policy and save
