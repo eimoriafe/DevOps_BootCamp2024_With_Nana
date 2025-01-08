@@ -1,3 +1,6 @@
+#Clone the java-app from Build Tools module
+git clone git@gitlab.com:twn-devops-bootcamp/latest/04-build-tools/java-app.git
+
 #Added the following to the gradle.build file for the java app
 plugins {
     id 'java'
@@ -37,6 +40,6 @@ repoPassword=password
 #Build app with gradle
 gradle build
 
-#Publish jar file to Nexus
+#Publish jar file to Nexus maven3 repository
 gradle publish
 
