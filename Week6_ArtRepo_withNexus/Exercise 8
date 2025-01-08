@@ -1,0 +1,20 @@
+#Create new user nexus3 on local node
+adduser nexus3/password
+
+#Create new user nexus3 on Nexus ARM UI with nx-admin, nx-java and nx-npm role
+nexus3 to have acces to both npm and maven repositories
+
+#Switch to new user
+su - nexus3
+
+#Fetch download URL for Nodejs app artifact using Nexus REST API
+curl -u nexus3:password -X GET 'http://138.68.150.44:8081/service/rest/v1/components?repository=npm-hosted&sort=1.0.0'
+
+#Fetch the latest artifact with the download URL obtained
+wget --user nexus3 --password password http://138.68.150.44:8081/repository/npm-hosted/nodejs-app/-/nodejs-app-1.0.0.tgz
+
+#Untar artifact and run on server
+tar -xzvf nodejs-app-1.0.0.tgz
+cd package
+npm install
+node /server.js
