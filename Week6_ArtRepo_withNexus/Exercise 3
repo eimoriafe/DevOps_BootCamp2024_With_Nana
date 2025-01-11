@@ -1,3 +1,15 @@
 #Create user for team 1
 On Nexus UI create user nexus with password password access to npm repo
+-create role with npm privileges 
+	nx-repository-view-npm-*-*
+	nx-repository-view-npm-*-add
+	nx-repository-view-npm-*-browse
+	nx-repository-view-npm-*-edit
+
+-create user nexus/password with nx-npm role
+
+On local system, configure nexus access user to npm repo
+#install npm
+sudo apt install -y npm
+npm adduser --auth-type=legacy --registry=http://206.189.23.181:8081/repository/npm-hosted/
 
