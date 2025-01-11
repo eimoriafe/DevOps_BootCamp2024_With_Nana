@@ -2,23 +2,32 @@
 1. Droplet for server with 8GB RAM created on Digital Ocean(DO) Cloud
 
 2. Install nexus on local ubuntu
--sudo apt install openjdk-17-sdk
+#SSH into droplet
+ssh root@<IP_Addr of droplet>
+
+#create nexus(non root) with password password 
+-adduser nexus
+-chmod -aG sudo nexus
+-su - nexus
+-mkdir .ssh
+-cd .ssh/vim authorized_keys/paste public key
+-sudo apt install -y openjdk-17-jre
 
 #change into opt directory
-cd opt
+cd /opt
 
 #fetch latest nexus tar file
-wget https://download.sonatype.com/nexus/3/nexus-3.75.1-01-unix.tar.gz
+sudo wget https://download.sonatype.com/nexus/3/nexus-3.75.1-01-unix.tar.gz
 
 #untar file
-tar -zxvf nexus-3.75.1-01-unix.tar.gz
+sudo tar -zxvf nexus-3.75.1-01-unix.tar.gz
 
 #create nexus user with adduser
 adduser nexus
 
 #grant ownership on nexus & sonatype folders
-chown -R nexus:nexus nexus-3.75.1-01
-chown -R nexus:nexus sonatype-work
+sudo chown -R nexus:nexus nexus-3.75.1-01
+sudo chown -R nexus:nexus sonatype-work
 
 #Uncomment config in nexus.rc file
 vim /opt/nexus-3.75.1-01/bin/nexus.rc
@@ -29,12 +38,14 @@ su - nexus
 /opt/nexus-3.75.1-01/bin/nexus start
 
 #Configure firewall rule on DO dashboard
-Allow port 8081 inbound
-ps aux | grep nexus 
-netstat -lntp | grep *8081 
+sudo apt install net-tools
+ps aux | grep nexus
+netstat -lntp | grep :8081 
 
 #On browser, set password for nexus admin
-copy default password from /opt/sona-type*/nexus/admin.password
+copy default password from 
+cat /opt/sonatype-work/nexus3/admin.password
 enable anonymous access
 
+logged in on Nexus: http://206.189.23.181:8081
 

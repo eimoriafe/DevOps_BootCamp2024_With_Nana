@@ -4,3 +4,55 @@ npm adduser --auth-type=legacy --registry=http://138.68.150.44:8081/repository/n
 #For maven app
 
 
+#URL for nodejs tar artifact
+http://138.68.150.44:8081/repository/npm-hosted/nodejs-app/-/nodejs-app-1.0.0.tgz
+
+how to access rest endpoint
+curl or wget
+
+list the repo on nexus
+curl -u user:pwd -X GET 'http://IP_addr:port/service/rest/v1/repositories'
+
+for specific components in snapshots repo
+curl -u user:pwd -X GET 'http://ip_addr:port/service/rest/v1/components?repository=maven-snapshots'
+
+if for release repo
+curl -u user:pwd -X GET 'http://ip_addr:port/service/rest/v1/components?repository=maven-release'
+
+if for component ID, 
+curl -u user:pwd -X GET 'http://ip_addr:port/service/rest/v1/components/component_id'
+
+
+To get URL for nodejs tar artifact
+curl -u nexus3:password -X GET 'http://138.68.150.44:8081/service/rest/v1/components?repository=npm-hosted'
+
+http://138.68.150.44:8081/repository/npm-hosted/nodejs-app/-/nodejs-app-1.0.0.tgz"
+
+Fetch with wget
+wget --user nexus3 --password password http://138.68.150.44:8081/repository/npm-hosted/nodejs-app/-/nodejs-app-1.0.0.tgz
+
+Blob store
+Nexus uses blob stores for storage of repo components(uploaded files)
+Blob stores binary files, either locally or cloud like AWS S3
+You can use one blob store for one repo or share across multiple repo, 
+blob store config is found in sonatype-work folder(one of the two folder in nexus tar file)
+The connection of a blob store to a repo is permanent and cannot be changed so plan carefully
+
+--Component
+A high-level definition of what is being uploaded to nexus, containing 1 or more assets which are the
+actual files/packages that are eventually uploaded.
+
+Component can be docker image, zip file or jar file
+
+--Cleanup policies
+pre-releases are also known as snapshots
+component age is defined in days
+Soft delete-marking component for deletion, does not free up space,
+To delete from disk, we execute the compact blob store task.
+
+
+
+
+
+
+
