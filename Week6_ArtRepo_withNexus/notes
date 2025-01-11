@@ -50,6 +50,11 @@ component age is defined in days
 Soft delete-marking component for deletion, does not free up space,
 To delete from disk, we execute the compact blob store task.
 
+error with java
+Failed to calculate the value of task ':compileJava' property 'javaCompiler'.
+      > Toolchain installation '/usr/lib/jvm/java-17-openjdk-amd64' does not provide the required capabilities: [JAVA_COMPILER]
+
+
 
 
 

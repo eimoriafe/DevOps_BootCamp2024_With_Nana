@@ -1,0 +1,30 @@
+#Update apt index and check java 
+sudo apt update
+java --version
+
+#Install java if java is not present
+sudo apt install openjdk-17-jdk
+
+#Download gradle
+wget https://services.gradle.org/distributions/gradle-8.10-bin.zip -P /tmp
+
+#Install unzip
+sudo apt install unzip
+
+#Unzip downloaded gradle zip file
+sudo unzip -d /opt/gradle /tmp/gradle-8.10-bin.zip
+
+#Create variable script for gradle
+sudo vi /etc/profile.d/gradle.sh
+-export GRADLE_HOME=/opt/gradle/gradle-8.10
+-export PATH=${GRADLE_HOME}/bin:${PATH}
+
+#Assign execute privilege to script file
+sudo chmod +x /etc/profile.d/gradle.sh
+
+#Apply changes
+source /etc/profile.d/gradle.sh
+
+#Confirm gradle version
+gradle -v
+
