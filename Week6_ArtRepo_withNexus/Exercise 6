@@ -1,2 +1,6 @@
 #Create nexus user for project 2 with access to maven repo
 On Nexus UI, created nexus2, with nx-java role
+nx-java role has privileges below
+	nx-repository-admin-maven2-maven-snapshots-*
+	nx-repository-admin-maven2-maven-snapshots-edit
+	nx-repository-view-maven2-maven-snapshots-add
