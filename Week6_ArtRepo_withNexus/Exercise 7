@@ -23,7 +23,7 @@ publishing {
    }
 repositories {
         maven {
-            name 'maven-hosted'
+            name 'nexus'
             url "http://206.189.23.181:8081/repository/maven-hosted/"
             allowInsecureProtocol = true
             credentials {
@@ -39,6 +39,10 @@ repoPassword=password
 
 #Build app with gradle
 gradle build
+
+#Add privilege on nx-java role for nexus2 user
+nx-repository-view-maven2-maven-snapshots-*
+nx-repository-view-maven2-maven-snapshots-add
 
 #Publish jar file to Nexus maven3 repository
 gradle publish
