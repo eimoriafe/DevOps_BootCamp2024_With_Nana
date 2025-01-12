@@ -4,7 +4,7 @@ vim automate_Node_fetch_n_run
 ---Script to automate fetch and run of node artifact from Nexus repo---
 
 #Save artifact details in json file
-curl -u nexus3:password -X GET 'http://138.68.150.44:8081/service/rest/v1/components?repository=npm-hosted&sort=version' jq "." > artifact.json
+curl -u nexus3:password -X GET 'http://206.189.23.181:8081/service/rest/v1/components?repository=npm-hosted&sort=version' jq "." > artifact.json
 
 #grab the download url from the save artifact details using 'jq'json processor tool
 artifactDownloadUrl=$(jq '.items[].assets[].downloadUrl' artifact.json --raw-output)
