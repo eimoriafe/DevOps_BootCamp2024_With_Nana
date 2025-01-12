@@ -1,0 +1,8 @@
+#Clone git repo and create mine
+git clone git@gitlab.com:twn-devops-bootcamp/latest/07-docker/docker-exercises.git
+cd docker-exercises
+
+#Create my empty repo and push to it
+git remote set-url origin git@gitlab.com:exceloracle1/week-7-repo/docker-exercises.git
+git remote -v
+git push
