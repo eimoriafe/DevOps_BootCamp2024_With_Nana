@@ -1,4 +1,3 @@
-#Create user for team 1
 On Nexus UI create user nexus with password password access to npm repo
 -create role with npm privileges 
 	nx-repository-view-npm-*-*
