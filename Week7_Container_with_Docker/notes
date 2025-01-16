@@ -56,3 +56,48 @@ gradle build
 
 java -jar <>.jar
 
+#start phpmyadmin container using official image
+docker run --name phpmyadmin -d --link mysql8:db --net mysql-network -p 8084:80 phpmyadmin
+
+-----------
+dockerfile (building docker image))
+
+first line of dockerfile
+Dockerfile is always save with the D capitalized 
+using node as example
+#every image is based on docker hub is based on another base image
+FROM node:20-alpine #to pull the specific image of node
+
+ENV MONGO_DB_USERNAME=admin \ #environmental variables
+    MONGO_DB_PWD=password
+
+RUN mkdir -p /home/app #making a directory inside the container fs, RUN always run command inside the container.
+
+COPY . /home/app #copy from the host directory to the container fs directory
+
+WORKDIR /home/app #the default working directory inside the container where all commands run from automatically
+
+RUN npm install #to create the container specific node modules inside the container when building the image
+
+CMD ["node","server.js"]
+
+whenever we adjust the Dockerfile, you must rebuild the image
+#to create the app image
+docker build -t my-app:1.0
+
+#to run the fs of the container
+docker exec -it container_id /bin/sh
+
+--------------
+to push to a private repo, 
+1. you have to login to the private repo using the auth literal provided by the private repo ,in this case AWS
+aws ecr get-login-password --region eu-centrl-1 | docker login --username AWS --password-stdin XXXXXX.dkr.ec
+
+
+you also need to have awscli as well
+ 
+-------------------
+
+create docker volume for mysql
+
+
