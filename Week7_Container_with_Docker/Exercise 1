@@ -18,8 +18,28 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin 
 docker --version
 sudo docker run hello-world
 
-#Install mysql
-sudo docker run --name docker-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:8.0
+#create mysql container virtual network
+sudo docker network create mysql-network
 
+#start mysql with needed env variable
+docker run -d \
+-p 3306:3306 \
+-e DB_USER=admin \
+-e DB_PWD=password \
+-e DB_SERVER=mysql \
+-e DB_NAME=mysql \
+-e MYSQL_ROOT_PASSWORD=password \
+--net mysql-network \
+--name mysql8
+mysql:8.0
 
+#export env variables needed for the java application
+export DB_USER=admin
+export DB_PWD=password
+export DB_SERVER=mysql
+export DB_NAME=mysql
+
+gradle build
+
+java -jar build/libs/docker-exercises-project-1.0-SNAPSHOT.jar 
 
