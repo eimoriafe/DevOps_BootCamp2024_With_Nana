@@ -1,0 +1,4 @@
+#Start mysql gui container
+docker run --name phpmyadmin -d --link mysql8:db --net mysql-network -p 8084:80 phpmyadmin
+
+access with root:password
