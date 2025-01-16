@@ -1,0 +1,41 @@
+#Creat docker compose yaml file with the entries below
+services:
+  db:
+    image: mysql:8.0
+    container_name: mysql8
+    ports:
+      - 3306:3306
+    volumes:
+      - db-data:/var/lib/man-db    
+ restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      DB_USER: admin
+      DB_PWD: password
+      DB_SERVER: mysql
+      DB_NAME: mysql
+
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: phpmyadmin
+    restart: always
+    ports:
+      - 8084:80
+    environment:
+      - PMA_ARBITRARY=0
+
+volumes:
+  db-data:
+    driver: local
+
+#services attribute not specified for yaml file to avoid confusion
+#PMA_ARBITRARY set to 0, to lock the connection to the specific single mysql server
+#restart attribute set to always to allow services and container to auto-restart during reboot.
+
+#to launch the containers via the compose yaml file and running in the background
+sudo docker compose -f mysql-docker-compose.yaml up -d 
+
+#to stop the containers 
+sudo docker compose -f mysql-docker-compose.yaml up -d
+
+
