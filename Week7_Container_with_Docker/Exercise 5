@@ -1,0 +1,35 @@
+#Create docker hosted repository on Nexus UI
+#Create repository,
+	-select docker-hosted
+	-assign to blob store
+	-enable http port, 8082
+#Create role nx-docker
+	-assign privileges nx-repository-view-docker-docker-hosted-*
+
+#Assign role nx-docker to nexus user
+
+#create /etc/docker/daemon.json file and add entries
+{
+        "insecure-registries": ["192.168.5.3:8082"]
+}
+
+
+#restart docker service
+sudo systemctl restart docker
+
+#login into docker registry
+sudo docker login 192.168.5.3:8082
+
+#Build docker exercise app 
+gradle build
+
+#Build docker image
+sudo docker build -t java-docker-app:1.0 .
+
+#Tag docker image
+sudo docker tag java-docker-app:1.0 192.168.5.3:8082/docker-hosted/java-docker-app:1.0
+
+#Push image to nexus repo
+sudo docker push 192.168.5.3:8082/docker-hosted/java-docker-app:1.0
+
+
