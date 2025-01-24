@@ -7,7 +7,7 @@ ssh root@<IP_Addr of droplet>
 
 #create nexus(non root) with password password 
 -adduser nexus
--chmod -aG sudo nexus
+-usermod -aG sudo nexus
 -su - nexus
 -mkdir .ssh
 -cd .ssh/vim authorized_keys/paste public key
