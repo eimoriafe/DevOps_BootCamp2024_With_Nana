@@ -11,8 +11,7 @@ ssh root@<IP_Addr of droplet>
 -su - nexus
 -mkdir .ssh
 -cd .ssh/vim authorized_keys/paste public key
--sudo apt install -y openjdk-17-jre
-
+-sudo apt install -y openjdk-17-jre-headless
 #change into opt directory
 cd /opt
 
