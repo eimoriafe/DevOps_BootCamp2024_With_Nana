@@ -1,7 +1,7 @@
 #Clone the java-app from Build Tools module
 git clone git@gitlab.com:twn-devops-bootcamp/latest/04-build-tools/java-app.git
 
-#Added the following to the gradle.build file for the java app
+#Added the following to the build.gradle file for the java app
 plugins {
     id 'java'
     id 'org.springframework.boot' version '3.1.0'
