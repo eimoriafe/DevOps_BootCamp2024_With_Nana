@@ -1,12 +1,12 @@
 #Creat docker compose yaml file with the entries below
 services:
-  db:
+  mysql:
     image: mysql:8.0
     container_name: mysql8
     ports:
       - 3306:3306
     volumes:
-      - db-data:/var/lib/man-db    
+      - mysql-data:/var/lib/man-db    
  restart: always
     environment:
       MYSQL_ROOT_PASSWORD: password
@@ -14,7 +14,7 @@ services:
       DB_PWD: password
       DB_SERVER: mysql
       DB_NAME: mysql
-
+      command: --default-authentication-plugin=mysql_native_password
   phpmyadmin:
     image: phpmyadmin
     container_name: phpmyadmin
@@ -23,9 +23,10 @@ services:
       - 8084:80
     environment:
       - PMA_ARBITRARY=0
+      - PMA_HOST=mysql
 
 volumes:
-  db-data:
+  mysql-data:
     driver: local
 
 #services attribute not specified for yaml file to avoid confusion

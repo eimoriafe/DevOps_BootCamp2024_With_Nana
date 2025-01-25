@@ -43,3 +43,7 @@ gradle build
 
 java -jar build/libs/docker-exercises-project-1.0-SNAPSHOT.jar 
 
+------------
+Start mysql inside docker
+sudo docker run -d -p 3306:3306 -e DB_USER="root" -e DB_PWD=password -e DB_SERVER="mysql" -e DB_NAME="mysql" -e MYSQL_ROOT_PASSWORD=password --net mysql-network --name mysql8 mysql:8.0
+
