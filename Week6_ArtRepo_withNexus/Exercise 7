@@ -41,8 +41,10 @@ repoPassword=password
 gradle build
 
 #Add privilege on nx-java role for nexus2 user
-nx-repository-view-maven2-maven-snapshots-*
+nx-repository-view-maven2-maven-hosted-*
+nx-repository-view-maven2-maven-hosted-add
 nx-repository-view-maven2-maven-snapshots-add
+nx-repository-view-maven2-maven-snapshots-edit
 
 #Publish jar file to Nexus maven3 repository
 gradle publish
