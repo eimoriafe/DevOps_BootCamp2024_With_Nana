@@ -1,0 +1,19 @@
+#Create docker file template docker image of node app
+FROM node:20-alpine
+
+#create directory in container
+RUN mkdir -p /usr/app
+
+#Copy details of node essentials into container working directory
+COPY app/* /usr/app/
+
+#set working directory in container
+WORKDIR /usr/app
+
+#indicate port for app bindings
+EXPOSE 3000
+
+RUN npm install
+
+CMD ["node", "server.js"]
+
