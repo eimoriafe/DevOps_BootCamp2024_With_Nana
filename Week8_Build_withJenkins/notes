@@ -1,0 +1,8 @@
+Build automation in simple terms
+test code-> build application -> push to repo -> deploy to server
+
+jenkins - one of the BA tools on a dedicated server to do the above
+jenkins- run tests, build artifacts,publish artifacts, deploy artifacts, send notifications,..
+jenkins needs to integrate with many other tools like docker,rep, deployment servers and it does so with plugins
+
+
