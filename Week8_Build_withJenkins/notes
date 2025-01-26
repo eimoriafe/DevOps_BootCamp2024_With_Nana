@@ -5,4 +5,13 @@ jenkins - one of the BA tools on a dedicated server to do the above
 jenkins- run tests, build artifacts,publish artifacts, deploy artifacts, send notifications,..
 jenkins needs to integrate with many other tools like docker,rep, deployment servers and it does so with plugins
 
+2 ways to install jenkins on server
+it is directly on OS or as a container
 
+Install jenkins (it needs port 8080)
+
+to run docker container
+sudo docker run -p 8080:8080 \ (for browser access).
+-p 50000:50000 \ for master-worker nodes binding in a cluster of jenkins setup
+-d (for detached mode) 
+-v jenkins_home:/var/jenkins jenkins/jenkins:lts \(for persistent volumes)
