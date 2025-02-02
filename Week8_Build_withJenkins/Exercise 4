@@ -1,0 +1,9 @@
+#Extract into Jenkins Shared Library
+
+-Create a separate git repo for Jenkins Shared Library
+- Extract code withing the script blocks from increment version.
+- Run tests. 
+- Build docker image
+- Push docker image
+- Commit version update to Jenkins Shared Library
+- Configure your Jenkinsfile to use the Jenkins Shared Library project
