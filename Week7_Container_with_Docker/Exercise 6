@@ -25,7 +25,7 @@ services:
       - MYSQL_PASSWORD=${DB_PWD}
     volumes:
     - mysql-data:/var/lib/mysql
-    container_name: mysql
+    container_name: mysql8
     command: --default-authentication-plugin=mysql_native_password
     healthcheck:
       test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
@@ -42,22 +42,22 @@ services:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
     container_name: phpmyadmin
     depends_on:
-      - mysql
+      - mysql8
 volumes:
   mysql-data:
     driver: local
 
 # set all needed environment variables
 export DB_USER=admin
-export DB_PWD=adminpass
+export DB_PWD=password
 export DB_SERVER=mysql
-export DB_NAME=team-member-projects
+export DB_NAME=mysql
 
-export MYSQL_ROOT_PASSWORD=rootpass
+export MYSQL_ROOT_PASSWORD=password
 
 export PMA_HOST=mysql
 export PMA_PORT=3306
 
 # start all 3 containers
-docker-compose -f docker-compose-with-app.yaml up
+docker-compose -f mysql-docker-compose-with-app.yaml up
 
