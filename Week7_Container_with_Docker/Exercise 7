@@ -1,0 +1,30 @@
+# on Linux server - to add an insecure docker registry, add the file /etc/docker/daemon.json with the following content
+{
+  "insecure-registries" : [ "[192.168.5.3:8083]" ] 
+}
+
+# restart docker for the configuration to take affect
+sudo service docker restart
+
+# check the insecure repository was added - last section "Insecure Registries:"
+docker info
+
+# do docker login to repo
+docker login 192.168.5.3:8083
+
+# change hardcoded HOST env var in src/main/resources/static/index.html file, line 48
+const HOST = "{server-ip-address}";
+
+# rebuild the application and image and push to repo
+gradle build
+docker build -t 192.168.5.3:8083/java-app:1.0-SNAPSHOT .
+docker push 192.168.5.3:8083/java-app:1.0-SNAPSHOT 
+
+# copy docker-compose file to remote server
+scp -i ~/.ssh/id_rsa docker-compose.yaml {server-user}:{server-ip}:/home/{server-user}
+
+# ssh into the remote server
+# set all env vars as you did in exercise 6
+# run docker compose file
+# open port 8080 on server to access java application
+

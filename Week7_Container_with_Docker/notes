@@ -100,4 +100,10 @@ you also need to have awscli as well
 
 create docker volume for mysql
 
+To install docker on linux Mint
+https://linuxiac.com/how-to-install-docker-on-linux-
+/
 
+----------
+create Dockerfile inside docker-exercises folder sub folder called java-sql-app
+copy jar file into java-sql-app folder 
