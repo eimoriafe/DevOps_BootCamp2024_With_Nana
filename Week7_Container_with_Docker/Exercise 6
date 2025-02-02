@@ -1,1 +1,63 @@
 #Add app to docker-compose file
+#version: '3'
+services:
+  my-java-app:
+    image: java-mysql-app:1.0 # specify the full image name with repository name
+    environment:
+      - DB_USER=${DB_USER}
+      - DB_PWD=${DB_PWD}
+      - DB_SERVER=${DB_SERVER}
+      - DB_NAME=${DB_NAME}
+    ports:
+    - 8080:8080
+    container_name: my-java-app
+    depends_on:
+      mysql:
+        condition: service_healthy
+  mysql:
+    image: mysql:8.0
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${DB_NAME}
+      - MYSQL_USER=${DB_USER}
+      - MYSQL_PASSWORD=${DB_PWD}
+    volumes:
+    - mysql-data:/var/lib/mysql
+    container_name: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  phpmyadmin:
+    image: phpmyadmin
+    ports:
+      - 8083:80
+    environment:
+      - PMA_HOST=${PMA_HOST}
+      - PMA_PORT=${PMA_PORT}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    container_name: phpmyadmin
+    depends_on:
+      - mysql
+volumes:
+  mysql-data:
+    driver: local
+
+# set all needed environment variables
+export DB_USER=admin
+export DB_PWD=adminpass
+export DB_SERVER=mysql
+export DB_NAME=team-member-projects
+
+export MYSQL_ROOT_PASSWORD=rootpass
+
+export PMA_HOST=mysql
+export PMA_PORT=3306
+
+# start all 3 containers
+docker-compose -f docker-compose-with-app.yaml up
+
