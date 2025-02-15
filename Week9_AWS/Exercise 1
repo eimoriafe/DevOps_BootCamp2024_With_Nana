@@ -1,0 +1,12 @@
+#Create IAM user
+create IAM user called emma with password: Password@123
+with user access to AWS Mgt Console
+with user must create password at next sign in
+Group devops created
+
+Permissions for devops group
+AmazonVPCFullAccess
+AmazonEC2FullAccess
+AdministratorAccess
+IAMUserChangePassword
+
