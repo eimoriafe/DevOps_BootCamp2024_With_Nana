@@ -1,9 +1,9 @@
 # ssh into server
-ssh -i ~/id_rsa root@{server-ip-address}
+#ssh -i ~/id_rsa root@{server-ip-address}
 
 # login to your docker hub registry
 docker login
 
 # pull and run the new docker image from registry
-docker run -p 3000:3000 {docker-hub-id}/myapp:{image-name}
+docker run -d -p 3000:3000 excelltest/myapp:1.1.0-15
 
