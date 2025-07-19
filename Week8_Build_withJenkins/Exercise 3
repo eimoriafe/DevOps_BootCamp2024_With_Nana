@@ -1,7 +1,7 @@
 # ssh into server
 #ssh -i ~/id_rsa root@{server-ip-address}
 
-# login to your docker hub registry
+# logging in to my docker hub registry
 docker login
 
 # pull and run the new docker image from registry
