@@ -1,9 +1,60 @@
 #Extract into Jenkins Shared Library
 
--Create a separate git repo for Jenkins Shared Library
+Create a separate git repo for Jenkins Shared Library
 - Extract code withing the script blocks from increment version.
 - Run tests. 
 - Build docker image
 - Push docker image
 - Commit version update to Jenkins Shared Library
 - Configure your Jenkinsfile to use the Jenkins Shared Library project
+
+#!/user/bin/env groovy
+
+@Library('jenkins-shared-library')_
+
+pipeline {
+    agent any
+    tools {
+        nodejs "node"
+    }
+    stages {
+        stage("init"){
+            steps {
+                script {
+                    //gv = load "script.groovy"
+                    sh 'echo initializing'
+                }
+            }
+        }
+        stage('increment version') {
+            steps {
+                script {
+                    incre_Version()
+                }          
+            }
+        }
+        stage('Run tests') {
+            steps {
+               script {
+                    runTest()
+                }
+            }
+        }
+        stage('Build and Push docker image') {
+            steps {
+                script {
+                    buildPushdocker()
+                }
+            }
+        }
+        stage('commit version update') {
+            steps {
+                script {
+                    commitVersionUpdate()
+                }
+            }
+        }
+    }
+}
+
+
