@@ -1,0 +1,9 @@
+{
+    "AccessKey": {
+        "UserName": "emmy1",
+        "AccessKeyId": "AKIAZEV3XFR2MSOXJPUH",
+        "Status": "Active",
+        "SecretAccessKey": "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",
+        "CreateDate": "2025-08-03T16:37:16+00:00"
+    }
+}

@@ -1,3 +1,16 @@
+AWS-Commands.md
+aws ec2 run-instances
+    --image-id ami-xxxxxx
+    --count 1
+    --instance-type t2.micro
+    --key-name MyKpCli
+    --security-group-ids sg-xxxxx
+    --subnet-id subnet-xxx
+
+
+#Had to add a .env file in the same tree as the docker-compose.yaml file to load the environmental variable for the image tag.
+
+
 #With docker compose and server shell script
 #!/usr/bin/env groovy
 
@@ -40,7 +53,7 @@ pipeline {
                     def remoteHost = "16.16.201.115"
                     def remoteUser = "ec2-user"
                     def remotePath = "/home/ec2-user"
-                    def shellCmd = "bash ./server-cmds.sh" 
+                    def shellCmd = "bash ./server-cmds.sh ${env.IMAGE_NAME}" 
                     //def dockerComposeCmd = "docker-compose -f docker-compose.yaml up --detach"
                     sshagent(['ec2-server-key']) {
                         sh "ssh-keyscan -H ${remoteHost} >> ~/.ssh/known_hosts"

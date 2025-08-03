@@ -2,11 +2,33 @@
 create IAM user called emma with password: Password@123
 with user access to AWS Mgt Console
 with user must create password at next sign in
-Group devops created
 
+Group devops created
 Permissions for devops group
 AmazonVPCFullAccess
 AmazonEC2FullAccess
 AdministratorAccess
 IAMUserChangePassword
 
+#Create User
+aws iam create-user --user-name emmy1
+aws iam add-user-to-group --user-name emmy1 --group-name devops
+aws iam create-access-key --user-name emmy1 > EmKey.txt
+aws iam create-login-profile --user-name emmy1 --password Password123
+aws iam attach-user-policy --user-name emmy1 --policy-arn arn:aws:iam::aws:policy/IAMUserChangePassword
+
+#Create group devops
+aws iam create-group --group-name devops
+aws iam add-user-to-group --user-name emmy1 --group-name devops
+aws iam get-group --group-name devops
+
+#Fetch ARN for policies 
+aws iam list-policies | grep EC2FullAccess
+aws iam list-policies | grep VPCFullAccess
+
+#Attach policies to group
+aws iam attach-group-policy --group-name devops --policy-arn arn:aws:iam::aws:policy/AmazonEC2FullAccess
+aws iam attach-group-policy --group-name devops --policy-arn arn:aws:iam::aws:policy/AmazonVPCFullAccess
+
+#Confirm policies on group
+aws iam list-attached-group-policies --group-name devops

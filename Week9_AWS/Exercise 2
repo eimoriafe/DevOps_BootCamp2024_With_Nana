@@ -1,0 +1,10 @@
+#Configure AWS CLI
+aws configure
+AWS Access Key ID [****************FE7M]: AKIAZEV3XFR2GPWUHUFY
+AWS Secret Access Key [****************h8PL]: 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
+Default region name [eu-north-1]:
+Default output format [json]:
+
+#Confirm
+aws sts get-caller-identity
+
