@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #
 line 1- AKIAZEV3XFR2GPWUHUFY
 line 2- 1S9jWuAmlnz2oW8Pbj2Xl0Mw8Li555tqIAlIQxnF
@@ -15,6 +16,11 @@ aws ec2 run-instances
 
 #Had to add a .env file in the same tree as the docker-compose.yaml file to load the environmental variable for the image tag.
 
+=======
+emmy1:
+AKIAZEV3XFR2GPWUHUFY
+1S9jWuAmlnz2oW8Pbj2Xl0Mw8Li555tqIAlIQxnF
+>>>>>>> fcafb350c5ea10177b9071fd169fadb669233170
 
 #With docker compose and server shell script
 #!/usr/bin/env groovy
