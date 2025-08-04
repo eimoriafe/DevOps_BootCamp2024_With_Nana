@@ -20,6 +20,11 @@ aws ec2 run-instances
 emmy1:
 AKIAZEV3XFR2GPWUHUFY
 1S9jWuAmlnz2oW8Pbj2Xl0Mw8Li555tqIAlIQxnF
+
+admin1(root)
+AKIAZEV3XFR2LJNUFE7M
+BKItUMJ7EFn+EbANazneXTzolWEMK7HUwL49h8PL
+
 >>>>>>> fcafb350c5ea10177b9071fd169fadb669233170
 
 #With docker compose and server shell script
