@@ -1,0 +1,21 @@
+{
+    "UserId": "628532653172",
+    "Account": "628532653172",
+    "Arn": "arn:aws:iam::628532653172:root"
+}
+
+#VPC with 1 subnet created
+aws ec2 create-vpc --cidr-block 10.0.0.0/16 --query Vpc.VpcId --output text
+aws ec2 create-subnet --vpc-id vpc-0ffceabc80a6fc2d2 --cidr-block 10.0.1.0/24
+aws ec2 describe-subnets --filters "Name=vpc-0ffceabc80a6fc2d2,Values=vpc-0ffceabc80a6fc2d2"
+
+#Connecting subnet to IGW
+aws ec2 create-internet-gateway --query InternetGateway.InternetGatewayId --output text
+aws ec2 attach-internet-gateway --vpc-id vpc-0ffceabc80a6fc2d2 --internet-gateway-id igw-0a0c11630c94707ed
+aws ec2 create-route-table --vpc-id vpc-0ffceabc80a6fc2d2 --query RouteTable.RouteTableId --output text
+aws ec2 create-route --route-table-id rtb-05ac0b22c6fa0eb49 --destination-cidr-block 0.0.0.0/0 --gateway-id igw-0a0c11630c94707ed
+aws ec2 describe-route-tables --route-table-id rtb-05ac0b22c6fa0eb49
+
+#Security group to allow SSH-in
+aws ec2 create-security-group --group-name SSHAccess --description "Security group for SSH access" --vpc-id vpc-0ffceabc80a6fc2d2
+aws ec2 authorize-security-group-ingress --group-id sg-0e02c174e2efd4fa6 --protocol tcp --port 22 --cidr 0.0.0.0/0
