@@ -23,3 +23,8 @@ kubectl get services
 
 #describe deployment
 kubectl describe pod <pod_name>
+
+Yaml editors/Vscode yaml 
+Store yaml files with code
+
+Its deployment -> replicatset -> pod -> container
