@@ -1,0 +1,25 @@
+curl -LO https://github.com/kubernetes/minikube/releases/latest/download/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64
+
+#to run kubectl bundle within minikube
+alias kubectl="minikube kubectl --"
+source ~/.bashrc
+
+
+#scale pods without deleting deployment
+kubectl scale deployment nginx-depl --replicas=0
+
+#delete deployment 
+kubectl delete deployment nginx-depl
+
+#show pods
+kubectl get pods
+
+#describe pods
+kubectl describe pods <pod_name>
+
+#see services
+kubectl get services
+
+#describe deployment
+kubectl describe pod <pod_name>
